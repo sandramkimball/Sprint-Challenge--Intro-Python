@@ -1,36 +1,44 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
-class City:
-  def __init__(self, name, lat, lon):
-    self.name = name
-    self.lat = lat
-    self.lon = lon
-
 # In `cityreader`, use Python's built-in "csv" module to read and import into a City instance. 
 # Return a list with all the City instances.
 # Google "python 3 csv" for references and use your Google-fu for examples.#
 # Store the instances in the "cities" list, below.
 # Note that the first line of the CSVshould not be loaded into a City object.
 
+class City:
+  def __init__(self, name, lat, lon):
+    self.name = name
+    self.lat = lat
+    self.lon = lon
+
+  def __repr__(self):
+    return f'<{self.name}, {self.lat}, {self.lon}>\n'
+
+  def __str__(self):
+    return f'{self.name}, {self.lat}, {self.lon}\n'
+
 import csv
 
 cities = []
+all_city_data = []
+path = 'src\cityreader\cities.csv'
 
-def cityreader(cities):
-  with open('cities.csv') as csv_file:
-    reader = csv.reader(csv_file)
-    for row in reader:
-      city_row = City(row[0], row[1], row[2])
-      cities.append(city_row)
-      print(city_row)
-        
- 
-  return cities
+with open(path) as csv_file:
+  reader = csv.reader(csv_file)
 
-cityreader(cities)
-for c in cities:
-    print(c)
+  for row in reader:
+    r = row
+    all_city_data.append(r)
+
+  for row in all_city_data:
+    lat_lon = City(row[0], row[3], row[4])
+    cities.append(lat_lon)
+  
+  cities.remove(cities[0])
+
+print(cities)        
 
 
 
