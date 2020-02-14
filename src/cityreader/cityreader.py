@@ -1,6 +1,4 @@
-# Create a class to hold a city location. Call the class "City". It should have
-# fields for name, lat and lon (representing latitude and longitude).
-
+# Create a class called "City" with fields for name, lat and lon.
 # In `cityreader`, use Python's built-in "csv" module to read and import into a City instance. 
 # Return a list with all the City instances.
 # Google "python 3 csv" for references and use your Google-fu for examples.#
@@ -37,10 +35,6 @@ def cityreader(cities=[]):
     
       cities.remove(cities[0])
   return cities
-
-  print(cities)        
-
-# cityreader(cities)
 
 
 # STRETCH GOAL!
