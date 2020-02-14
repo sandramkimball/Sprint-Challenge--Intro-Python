@@ -82,6 +82,7 @@ g = []
 new_humans = humans
 for i in new_humans:
     i.name = i.name.upper()
+    i.age = (i.age + 5)
     g.append(i)
 
 print(g)

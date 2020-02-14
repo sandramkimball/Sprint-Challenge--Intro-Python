@@ -21,25 +21,26 @@ class City:
 
 import csv
 
-cities = []
-all_city_data = []
-path = 'src\cityreader\cities.csv'
 
-with open(path) as csv_file:
-  reader = csv.reader(csv_file)
+def cityreader(cities=[]):  
+  all_city_data = []
+  path = 'src\cityreader\cities.csv'
 
-  for row in reader:
-    r = row
-    all_city_data.append(r)
+  with open(path) as csv_file:
+    reader = csv.reader(csv_file)
+    for row in reader:
+      r = row
+      all_city_data.append(r)
+    for row in all_city_data:
+      lat_lon = City(row[0], row[3], row[4])
+      cities.append(lat_lon)
+    
+      cities.remove(cities[0])
+  return cities
 
-  for row in all_city_data:
-    lat_lon = City(row[0], row[3], row[4])
-    cities.append(lat_lon)
-  
-  cities.remove(cities[0])
+  print(cities)        
 
-print(cities)        
-
+# cityreader(cities)
 
 
 # STRETCH GOAL!
